@@ -54,6 +54,7 @@ export class PostTypeJitsi extends React.PureComponent<Props, State> {
             if (this.props.post) {
                 const props = this.props.post.props;
                 let meetingLink = props.meeting_link + '?jwt=' + (this.state.meetingJwt);
+                meetingLink = props.meeting_link.replace('https', 'vbnjitsi');
                 meetingLink += `#config.callDisplayName="${props.meeting_topic || props.default_meeting_topic}"`;
                 window.open(meetingLink, '_blank');
             }
@@ -92,6 +93,7 @@ export class PostTypeJitsi extends React.PureComponent<Props, State> {
         const props = post.props;
 
         let meetingLink = props.meeting_link;
+        meetingLink = props.meeting_link.replace('https', 'vbnjitsi');
         if (props.jwt_meeting) {
             meetingLink += '?jwt=' + (props.meeting_jwt);
         }
